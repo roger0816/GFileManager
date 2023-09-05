@@ -9,10 +9,17 @@ import (
 )
 
 func main() {
+
+	go run()
+	select {}
+}
+
+func run(){
 	http.HandleFunc("/", uploadFile)
 	http.HandleFunc("/download/", downloadFile)
 	http.ListenAndServe(":8080", nil)
 }
+
 
 func getGoFilePath() string {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
